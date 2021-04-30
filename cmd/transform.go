@@ -7,6 +7,7 @@ import (
 
 	"github.com/Unreal4tress/go-sourceformat/vmf"
 	ulc "github.com/Unreal4tress/uelevelclip"
+	cprint "github.com/fatih/color"
 	"gonum.org/v1/gonum/spatial/r3"
 )
 
@@ -32,6 +33,9 @@ func transform(vmf *vmf.Node) *ulc.Block {
 		type Face struct {
 			Plane          Plane
 			VertexIndecies []int
+			Material       string
+			UAxis          [5]float64
+			VAxis          [5]float64
 		}
 		faces := make([]Face, solid.CountNodes("side"))
 		toolMaterial := false
@@ -43,7 +47,10 @@ func transform(vmf *vmf.Node) *ulc.Block {
 				toolMaterial = true
 				break
 			}
+			faces[i].Material = material
 			faces[i].VertexIndecies = make([]int, 0, 16)
+			faces[i].UAxis = parseAxis(side.String("uaxis"))
+			faces[i].VAxis = parseAxis(side.String("vaxis"))
 		}
 		if toolMaterial {
 			continue
@@ -119,12 +126,37 @@ func transform(vmf *vmf.Node) *ulc.Block {
 		}
 		polylist.Children = make([]ulc.Node, len(faces))
 		for i, face := range faces {
+			material, materialOk := assets.Materials[strings.ToLower(face.Material)]
 			polygon := &ulc.Block{Class: "Polygon"}
-			polygon.Children = make([]ulc.Node, len(face.VertexIndecies))
-			for j, vi := range face.VertexIndecies {
+			if materialOk {
+				polygon.Option = map[string]string{"Texture": material.Asset}
+			} else {
+				mat := strings.ToLower(face.Material)
+				if _, found := unknownMaterials[mat]; !found {
+					unknownMaterials[mat] = struct{}{}
+					cprint.Yellow("Warning: Unknown material found: \"%v\"", mat)
+				}
+			}
+			polygon.Children = make([]ulc.Node, 0, 16)
+			for _, vi := range face.VertexIndecies {
 				v := verteces[vi]
 				line := ulc.Line(fmt.Sprintf("Vertex   %+013.6f,%+013.6f,%+013.6f", v.Y*gScale, v.X*gScale, v.Z*gScale))
-				polygon.Children[j] = &line
+				polygon.Children = append(polygon.Children, &line)
+			}
+			if materialOk {
+				uvu := r3.Vec{X: face.UAxis[0], Y: face.UAxis[1], Z: face.UAxis[2]}
+				tu := r3.Scale(64/float64(material.W)/face.UAxis[4], uvu)
+				uvv := r3.Vec{X: face.VAxis[0], Y: face.VAxis[1], Z: face.VAxis[2]}
+				tv := r3.Scale(64/float64(material.H)/face.VAxis[4], uvv)
+				lineu := ulc.Line(fmt.Sprintf("TextureU %+013.6f,%+013.6f,%+013.6f", tu.Y/1.0, tu.X/1.0, tu.Z/1.0))
+				polygon.Children = append(polygon.Children, &lineu)
+				linev := ulc.Line(fmt.Sprintf("TextureV %+013.6f,%+013.6f,%+013.6f", tv.Y/1.0, tv.X/1.0, tv.Z/1.0))
+				polygon.Children = append(polygon.Children, &linev)
+				oru := r3.Scale(face.UAxis[3]*float64(material.W)/-512.0, tu)
+				orv := r3.Scale(face.VAxis[3]*float64(material.H)/-512.0, tv)
+				or := r3.Add(oru, orv)
+				lineo := ulc.Line(fmt.Sprintf("Origin   %+013.6f,%+013.6f,%+013.6f", or.Y, or.X, or.Z))
+				polygon.Children = append(polygon.Children, &lineo)
 			}
 			polylist.Children[i] = polygon
 		}

@@ -1,0 +1,109 @@
+{
+    "materials": {
+        "concrete/concretewall012": {
+            "asset": "/Game/Unreal4tress/World/Materials/Concretes/M_ConcreteWall012.M_ConcreteWall012",
+            "w": 1024,
+            "h": 1024
+        },
+        "concrete/concretewall012b": {
+            "asset": "/Game/Unreal4tress/World/Materials/Concretes/M_ConcreteWall012B.M_ConcreteWall012B",
+            "w": 1024,
+            "h": 1024
+        },
+        "concrete/concretewall009": {
+            "asset": "/Game/Unreal4tress/World/Materials/Concretes/M_ConcreteWall009.M_ConcreteWall009",
+            "w": 1024,
+            "h": 512
+        },
+        "nature/dirtground009": {
+            "asset": "/Game/Unreal4tress/World/Materials/Natures/M_NatureDirtGround009.M_NatureDirtGround009",
+            "w": 1024,
+            "h": 1024
+        },
+        "nature/ground_04": {
+            "asset": "/Game/Unreal4tress/World/Materials/Natures/M_NatureGround04.M_NatureGround04",
+            "w": 1024,
+            "h": 1024
+        },
+        "nature/blendrockgroundwallforest": {
+            "asset": "/Game/Unreal4tress/World/Materials/Natures/M_NatureBlendRockGroundWallForest.M_NatureBlendRockGroundWallForest",
+            "w": 1024,
+            "h": 1024
+        },
+        "metal/officedoor002": {
+            "asset": "/Game/Unreal4tress/World/Materials/Metals/M_NatureOfficeDoor002.M_NatureOfficeDoor002",
+            "w": 256,
+            "h": 512
+        },
+        "metal/metaldoor001": {
+            "asset": "/Game/Unreal4tress/World/Materials/Metals/M_MetalDoor001.M_MetalDoor001",
+            "w": 1024,
+            "h": 1024
+        },
+        "metal/ibeam001b": {
+            "asset": "/Game/Unreal4tress/World/Materials/Metals/M_MetalIBeam001B.M_MetalIBeam001B",
+            "w": 512,
+            "h": 1024
+        },
+        "metal/ibeam002": {
+            "asset": "/Game/Unreal4tress/World/Materials/Metals/M_MetalIBeam002.M_MetalIBeam002",
+            "w": 64,
+            "h": 1024
+        },
+        "glass/glasswindow001b": {
+            "asset": "/Game/Unreal4tress/World/Materials/Glasses/M_GlassWindow001b.M_GlassWindow001b",
+            "w": 128,
+            "h": 128
+        },
+        "props/metaldoor01_192_noentry": {
+            "asset": "/Game/Unreal4tress/World/Props/M_MetalDoor01192NoEntry.M_MetalDoor01192NoEntry",
+            "w": 1024,
+            "h": 512
+        },
+        "tools/toolsnodraw": {
+            "asset": "/Game/Unreal4tress/World/Materials/Tools/M_ToolNoDraw.M_ToolNoDraw",
+            "w": 512,
+            "h": 512
+        },
+        "dev/reflectivity_40": {
+            "asset": "/Game/Unreal4tress/World/Materials/Tools/M_DevReflectivity40.M_DevReflectivity40",
+            "w": 512,
+            "h": 512
+        }
+    },
+    "props": {
+        "models/props_2fort/chalkboard01.mdl": {
+            "asset": "/Game/Unreal4tress/World/Props/2Fort/S_Chalkboard01.S_Chalkboard01"
+        },
+        "models/props_2fort/fire_extinguisher.mdl": {
+            "asset": "/Game/Unreal4tress/World/Props/2Fort/S_FireExtinguisher.S_FireExtinguisher"
+        },
+        "models/props_2fort/groundlight001.mdl": {
+            "asset": "/Game/Unreal4tress/World/Props/2Fort/S_GroundLight001.S_GroundLight001"
+        },
+        "models/props_2fort/miningcrate002.mdl": {
+            "asset": "/Game/Unreal4tress/World/Props/2Fort/S_MiningCrate002.S_MiningCrate002"
+        },
+        "models/props_2fort/propane_tank_tall01.mdl": {
+            "asset": "/Game/Unreal4tress/World/Props/2Fort/S_PropaneTankTall01.S_PropaneTankTall01"
+        },
+        "models/props_2fort/telephone001.mdl": {
+            "asset": "/Game/Unreal4tress/World/Props/2Fort/S_Telephone001.S_Telephone001"
+        },
+        "models/props_2fort/telephonepole001.mdl": {
+            "asset": "/Game/Unreal4tress/World/Props/2Fort/S_TelephonePole001.S_TelephonePole001"
+        },
+        "models/props_2fort/window004b.mdl": {
+            "asset": "/Game/Unreal4tress/World/Props/2Fort/S_Window004B.S_Window004B"
+        },
+        "models/props_hydro/3pipe_turn_90.mdl": {
+            "asset": "/Game/Unreal4tress/World/Props/Hydro/S_3PipeTurn90.S_3PipeTurn90"
+        },
+        "models/props_hydro/3pipe_straight_128.mdl": {
+            "asset": "/Game/Unreal4tress/World/Props/Hydro/S_3PipeStraight128.S_3PipeStraight128"
+        },
+        "models/props_hydro/3pipe_straight_256.mdl": {
+            "asset": "/Game/Unreal4tress/World/Props/Hydro/S_3PipeStraight256.S_3PipeStraight256"
+        }
+    }
+}
