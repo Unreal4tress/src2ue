@@ -13,16 +13,18 @@ import (
 const gScale = 2.0
 
 var rootCmd = &cobra.Command{
-	Use:   "src2ue [VMF]",
+	Use:   "src2ue [RULE]",
 	Short: "Transform vmf to UE clipboard data",
 	Args:  cobra.RangeArgs(1, 1),
 	Run: func(cmd *cobra.Command, args []string) {
-		inFile := args[0]
-		if filepath.Ext(inFile) != ".vmf" {
+		if loadRule(args[0]) != nil {
+			return
+		}
+		if filepath.Ext(rule.SourceFile) != ".vmf" {
 			cprint.Red("Input file is not *.vmf file")
 			return
 		}
-		inF, err := os.Open(inFile)
+		inF, err := os.Open(rule.SourceFile)
 		if err != nil {
 			cprint.Red("Cannot open the file")
 			return
@@ -33,7 +35,7 @@ var rootCmd = &cobra.Command{
 			cprint.Red("Failed to decode vmf file")
 			return
 		}
-		outFile := inFile[0:len(inFile)-3] + "uecb.txt"
+		outFile := rule.DstPath + rule.MapName + ".uecb.txt"
 		outF, err := os.Create(outFile)
 		if err != nil {
 			cprint.Red("Failed to create new file")

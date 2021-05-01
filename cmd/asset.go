@@ -21,7 +21,7 @@ var assets struct {
 var unknownMaterials map[string]struct{}
 
 func loadAssets() {
-	f, err := os.Open("assets.json")
+	f, err := os.Open(rule.AssetsFile)
 	if err != nil {
 		cprint.Yellow("Warning: No found \"assets.json\"")
 		return

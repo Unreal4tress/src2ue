@@ -1,0 +1,7 @@
+{
+    "map_name": "ItemTest",
+    "game_path": "/Game/Unreal4tress/Maps/Other/",
+    "source_file": "E:/SteamLibrary/steamapps/common/Team Fortress 2/tf/maps/itemtest_d.vmf",
+    "assets_file": "assets.json",
+    "dst_path": "D:/UE4Projects/Unreal4tress/Content/Unreal4tress/Maps/Other/"
+}
