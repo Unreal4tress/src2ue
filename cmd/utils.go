@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 
+	ulc "github.com/Unreal4tress/uelevelclip"
 	"gonum.org/v1/gonum/spatial/r3"
 )
 
@@ -18,4 +19,9 @@ func parseAxis(text string) [5]float64 {
 	fmt.Sscanf(text, "[%f %f %f %f] %f",
 		&v[0], &v[1], &v[2], &v[3], &v[4])
 	return v
+}
+
+func makeUEVertexLine(v r3.Vec) ulc.Node {
+	line := ulc.Line(fmt.Sprintf("Vertex   %+013.6f,%+013.6f,%+013.6f", v.Y*gScale, v.X*gScale, v.Z*gScale))
+	return &line
 }
